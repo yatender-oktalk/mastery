@@ -27,9 +27,9 @@ defmodule Mastery.Core.Quiz do
     %{quiz | templates: templates}
   end
 
-  def select_questions(%__MODULE__{templates: t}) when map_size(t) == 0, do: nil
+  def select_question(%__MODULE__{templates: t}) when map_size(t) == 0, do: nil
 
-  def select_questions(quiz) do
+  def select_question(quiz) do
     quiz
     |> pick_current_question
     |> move_template(:used)
