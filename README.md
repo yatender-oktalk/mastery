@@ -7,7 +7,7 @@
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 by adding `mastery` to your list of dependencies in `mix.exs`:
 
-```elixir
+```setup
 def deps do
   [
     {:mastery, "~> 0.1.0"}
