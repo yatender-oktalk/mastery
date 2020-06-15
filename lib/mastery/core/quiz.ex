@@ -10,6 +10,7 @@ defmodule Mastery.Core.Quiz do
             record: %{},
             mastered: []
 
+  @spec new(any) :: %{:__struct__ => atom, optional(atom) => any}
   def new(fields) do
     struct!(__MODULE__, fields)
   end
