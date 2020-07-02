@@ -41,6 +41,7 @@ defmodule Mastery.Boundary.QuizManager do
       Map.update!(quizzes, quiz_title, fn quiz ->
         Quiz.add_template(quiz, template_fields)
       end)
+
     {:reply, :ok, new_quizzes}
   end
 

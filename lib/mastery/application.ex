@@ -7,6 +7,7 @@ defmodule Mastery.Application do
 
   def start(_type, _args) do
     IO.inspect("starting mastery")
+
     children = [
       # Starts a worker by calling: Mastery.Worker.start_link(arg)
       {Mastery.Boundary.QuizManager, [name: Mastery.Boundary.QuizManager]}

@@ -4,7 +4,26 @@ defmodule Mastery.Boundary.QuizSession do
   use GenServer
 
   def start_link({quiz, email}) do
+    GenServer.start_link(
+      __MODULE__,
+      {quiz, email},
+      name: via({quiz.title, email})
+    )
+  end
 
+  def via({_title, _email} = name) do
+    {
+      :via,
+      Registry,
+      {Mastery.Registry.QuizSession, name}
+    }
+  end
+
+  def take_quiz(quiz, email) do
+    DynamicSupervisor.start_child(
+      Mastery.Suprvisor.QuizSesison,
+      {__MODULE__, {quiz, email}}
+    )
   end
 
   def child_spec({quiz, email}) do
