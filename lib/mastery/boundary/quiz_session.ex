@@ -3,6 +3,18 @@ defmodule Mastery.Boundary.QuizSession do
   alias Mastery.Core.{Quiz, Response}
   use GenServer
 
+  def start_link({quiz, email}) do
+
+  end
+
+  def child_spec({quiz, email}) do
+    %{
+      id: {__MODULE__, {quiz.title, email}},
+      start: {__MODULE__, :start_link, [{quiz, email}]},
+      restart: :temporary
+    }
+  end
+
   def init({quiz, email}) do
     {:ok, {quiz, email}}
   end

@@ -7,7 +7,9 @@ defmodule Mastery.Boundary.TemplateValidator do
 
   import Mastery.Boundary.Validator
 
-  def errors(fields) when is_map(fields) do
+  def errors(fields) when is_list(fields) do
+    fields = Map.new(fields)
+
     []
     |> require(fields, :name, &validate_name/1)
     |> require(fields, :category, &validate_name/1)
