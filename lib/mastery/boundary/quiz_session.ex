@@ -21,7 +21,7 @@ defmodule Mastery.Boundary.QuizSession do
 
   def take_quiz(quiz, email) do
     DynamicSupervisor.start_child(
-      Mastery.Suprvisor.QuizSesison,
+      Mastery.Suprvisor.QuizSesion,
       {__MODULE__, {quiz, email}}
     )
   end
